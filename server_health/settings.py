@@ -11,6 +11,12 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import pymysql
+
+pymysql.version_info = (1, 4, 6, 'final', 0)
+pymysql.install_as_MySQLdb()
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'os_data_storage',
 ]
 
 MIDDLEWARE = [
@@ -73,12 +81,31 @@ WSGI_APPLICATION = 'server_health.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+#NOTE: -------------------<<<  Database  >>>-------------------------------------
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'servershealth',
+        'USER': 'root',
+        'HOST': 'annapurna.liara.cloud',
+        'PASSWORD': 'ipfuXXwlhIPC70V2z6nvXz5C',
+        'PORT': '31748',
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+            'init_command': 'ALTER DATABASE website DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci',
+        }
     }
 }
+
 
 
 # Password validation
