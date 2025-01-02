@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Server_1
 import psutil
 import time
+# import asyncio
 
 # Create your views here.
 
@@ -13,8 +14,11 @@ def index(request):
 
 
 
-def os_data_storage():
 
+
+
+def os_data_storage():
+    print('==================  OKOK')
     def data_getter_saver():
         # ========================<<   CPU   >>=========================
         # cpu_times = psutil.cpu_times()
@@ -56,8 +60,9 @@ def os_data_storage():
         net_io_counters_lo_bytes_sent = psutil.net_io_counters(pernic=True)['lo'].bytes_sent
         net_io_counters_lo_bytes_recv = psutil.net_io_counters(pernic=True)['lo'].bytes_recv
         # net_io_counters_eth0 = psutil.net_io_counters(pernic=True)['eth0']
-        net_io_counters_eth0_bytes_sent = psutil.net_io_counters(pernic=True)['eth0'].bytes_sent
-        net_io_counters_eth0_bytes_recv = psutil.net_io_counters(pernic=True)['eth0'].bytes_recv
+        # net_io_counters_eth0_bytes_sent = psutil.net_io_counters(pernic=True)['eth0'].bytes_sent
+        # net_io_counters_eth0_bytes_recv = psutil.net_io_counters(pernic=True)['eth0'].bytes_recv
+
         # net_connections = psutil.net_connections(kind='tcp')
         # net_if_addrs = psutil.net_if_addrs()
         # net_if_stats = psutil.net_if_stats()
@@ -93,8 +98,6 @@ def os_data_storage():
             disk_usage_percent = disk_usage_percent,
             net_io_counters_lo_bytes_sent = net_io_counters_lo_bytes_sent,
             net_io_counters_lo_bytes_recv = net_io_counters_lo_bytes_recv,
-            net_io_counters_eth0_bytes_sent = net_io_counters_eth0_bytes_sent,
-            net_io_counters_eth0_bytes_recv = net_io_counters_eth0_bytes_recv,
         )
 
 
@@ -102,7 +105,8 @@ def os_data_storage():
         
     while True:
         data_getter_saver()
-        time.sleep(1)
+        time.sleep(5)
+        
 
 
 

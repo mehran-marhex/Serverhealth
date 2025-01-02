@@ -18,5 +18,8 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
+    from os_data_storage.counter.main import endProject
+    endProject()
+
 if __name__ == '__main__':
     main()
