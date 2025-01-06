@@ -96,8 +96,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'servershealth',
         'USER': 'root',
-        'HOST': 'annapurna.liara.cloud',
-        'PASSWORD': 'ipfuXXwlhIPC70V2z6nvXz5C',
+        'HOST': '',
+        'PASSWORD': '',
         'PORT': '31748',
         'OPTIONS': {
             'charset': 'utf8mb4',
